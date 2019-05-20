@@ -8,6 +8,7 @@ const server = express();
 
 // Import Routers
 
+const authRouter = require('../auth/auth-router');
 const todoListRouter = require('../todo/todo-list-router');
 const workToDosRouter = require('../work/work-todos-router');
 const groceryToDosRouter = require('../grocery/grocery-todos-router');
@@ -26,6 +27,7 @@ server.get('/', (req, res) => {
     res.status(200).json({ message: 'Hi There!' });
 })
 
+server.use('/api/auth', authRouter);
 server.use('/api/todos', todoListRouter);
 server.use('/api/worktodos', workToDosRouter);
 server.use('/api/grocerytodos', groceryToDosRouter);

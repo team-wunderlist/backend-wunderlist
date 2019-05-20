@@ -10,14 +10,14 @@ exports.up = function(knex, Promise) {
             .integer('priority');
         tbl
             .date('due_date');
-        // tbl
-        //     .integer('user_id')
-        //     .unsigned()
-        //     .notNullable()
-        //     .references('id')
-        //     .inTable('users')
-        //     .onDelete('RESTRICT')
-        //     .onUpdate('CASCADE');
+        tbl
+            .integer('user_id')
+            .unsigned()
+            .notNullable()
+            .references('id')
+            .inTable('users')
+            .onDelete('RESTRICT')
+            .onUpdate('CASCADE');
     })
 };
 
