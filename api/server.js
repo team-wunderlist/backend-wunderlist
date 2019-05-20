@@ -12,6 +12,7 @@ const todoListRouter = require('../todo/todo-list-router');
 const workToDosRouter = require('../work/work-todos-router');
 const groceryToDosRouter = require('../grocery/grocery-todos-router');
 const tripToDosRouter = require('../trip/trip-todos-router');
+const householdToDosRouter = require('../household/household-todos-router');
 
 // Configure Middleware
 
@@ -29,5 +30,6 @@ server.use('/api/todos', todoListRouter);
 server.use('/api/worktodos', workToDosRouter);
 server.use('/api/grocerytodos', groceryToDosRouter);
 server.use('/api/triptodos', tripToDosRouter);
+server.use('/api/householdtodos', householdToDosRouter);
 
 module.exports = server;

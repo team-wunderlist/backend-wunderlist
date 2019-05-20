@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const Todos = require('./trip-todos-model');
+const Todos = require('./household-todos-model');
 
 // Get To-Do List
 
