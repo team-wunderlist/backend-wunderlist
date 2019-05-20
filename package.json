@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
 		"server": "nodemon index.js",
-		"start": "nodemon index.js"
+		"start": "node index.js"
 	},
   "repository": "https://github.com/team-wunderlist/backend-wunderlist.git",
   "author": "Mario Amaya <thefozcat@gmail.com>",
