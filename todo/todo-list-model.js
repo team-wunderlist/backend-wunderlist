@@ -18,7 +18,7 @@ function getTodoById(id) {
         .first();
 }
 
-function addTodo() {
+function addTodo(todo) {
     return db('todo')
         .insert(todo, 'id')
         .then(([id]) => {

@@ -22,6 +22,6 @@ server.get('/', (req, res) => {
     res.status(200).json({ message: 'Hi There!' });
 })
 
-server.use('/api/todolist', todoListRouter);
+server.use('/api/todos', todoListRouter);
 
 module.exports = server;
