@@ -9,7 +9,8 @@ const server = express();
 // Import Routers
 
 const todoListRouter = require('../todo/todo-list-router');
-const workToDoListRouter = require('../work/work-todos-router');
+const workToDosRouter = require('../work/work-todos-router');
+const groceryToDosRouter = require('../grocery/grocery-todos-router');
 
 // Configure Middleware
 
@@ -24,6 +25,7 @@ server.get('/', (req, res) => {
 })
 
 server.use('/api/todos', todoListRouter);
-server.use('/api/worktodos', workToDoListRouter);
+server.use('/api/worktodos', workToDosRouter);
+server.use('/api/grocerytodos', groceryToDosRouter);
 
 module.exports = server;
