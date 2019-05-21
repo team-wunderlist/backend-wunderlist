@@ -21,7 +21,8 @@ router.post('/register', (req, res) => {
 
         Users.addUser(user)
             .then(saved => {
-                res.status(200).json(saved)
+                const token = generateToken(saved);
+                res.status(200).json({token})
             })
             .catch(err => {
                 res.status(500).json({ error: err, message: 'This username is already taken.' })
