@@ -10,6 +10,7 @@ const server = express();
 
 const authRouter = require('../auth/auth-router');
 const todoListRouter = require('../todo/todo-list-router');
+const usersRouter = require('../users/users-router');
 // const workToDosRouter = require('../work/work-todos-router');
 // const groceryToDosRouter = require('../grocery/grocery-todos-router');
 // const tripToDosRouter = require('../trip/trip-todos-router');
@@ -29,6 +30,7 @@ server.get('/', (req, res) => {
 
 server.use('/api/auth', authRouter);
 server.use('/api/todos', todoListRouter);
+server.use('/api/users', usersRouter);
 // server.use('/api/worktodos', workToDosRouter);
 // server.use('/api/grocerytodos', groceryToDosRouter);
 // server.use('/api/triptodos', tripToDosRouter);

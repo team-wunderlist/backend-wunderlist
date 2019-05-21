@@ -21,7 +21,8 @@ router.post('/register', (req, res) => {
 
         Users.addUser(user)
             .then(saved => {
-                res.status(200).json(saved)
+                const token = generateToken(saved);
+                res.status(200).json({token})
             })
             .catch(err => {
                 res.status(500).json({ error: err, message: 'This username is already taken.' })
@@ -55,7 +56,7 @@ function generateToken(user) {
         username: user.username
     }
     const options = {
-        expiresIn: '1hr'
+        expiresIn: '24hr'
     }
     return jwt.sign(payload, secrets.jwtSecret, options)
 }
