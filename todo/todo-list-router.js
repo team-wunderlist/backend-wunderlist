@@ -3,7 +3,7 @@ const router = require('express').Router();
 const db = require('../data/dbConfig');
 const restricted = require('../auth/restricted-middleware');
 
-router.get("/", restricted, (req, res) => {
+router.get('/', restricted, (req, res) => {
   db('todo')
     .returning('id')
     .where({ user_id: req.decodedToken.subject })
@@ -15,7 +15,7 @@ router.get("/", restricted, (req, res) => {
     });
 });
 
-router.get("/:id", restricted, (req, res) => {
+router.get('/:id', restricted, (req, res) => {
   const { id } = req.params;
 
   db('todo')
@@ -34,7 +34,7 @@ router.get("/:id", restricted, (req, res) => {
     });
 });
 
-router.post("/", restricted, (req, res) => {
+router.post('/', restricted, (req, res) => {
   if (!req.body.item) {
     res.status(400).json({ errorMessage: 'To-do items cannot be left blank.' });
   } else {
@@ -58,7 +58,7 @@ router.post("/", restricted, (req, res) => {
   }
 });
 
-router.put("/:id", restricted, (req, res) => {
+router.put('/:id', restricted, (req, res) => {
   const { id } = req.params;
 
   if (!req.body.item) {
@@ -81,13 +81,13 @@ router.put("/:id", restricted, (req, res) => {
   }
 });
 
-router.delete("/:id", restricted, (req, res) => {
+router.delete('/:id', restricted, (req, res) => {
   const { id } = req.params;
 
   db('todo')
     .where({ id, user_id: req.decodedToken.subject })
     .del()
-    .returning("id")
+    .returning('id')
     .then(count => {
       if (count > 0) {
         res.status(200).json(count);

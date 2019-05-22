@@ -61,16 +61,4 @@ function generateToken(user) {
     return jwt.sign(payload, secrets.jwtSecret, options)
 }
 
-// Testing
-
-router.get('/users', (req, res) => {
-    Users.getUsers()
-        .then(users => {
-            res.status(201).json(users)
-        })
-        .catch(err => {
-            res.status(500).json({ error: err, message: 'Users could not be retrieved.' })
-        })
-})
-
 module.exports = router;
