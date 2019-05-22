@@ -7,35 +7,18 @@ let token;
 
 beforeAll(async done => {
     await db('users');
-    request(server)
-      .post('/api/auth/login')
-      .send({
-        username: 'user',
-        password: 'password'
-      })
-      .end((err, response) => {
-        token = response.body.token;
-        console.log(token)
-        done();
-      });
+        request(server)
+        .post('/api/auth/login')
+        .send({
+            username: 'user',
+            password: 'password'
+        })
+        .end((err, response) => {
+            token = response.body.token;
+            console.log(token)
+            done();
+        });
 });
-
-// beforeAll(async done => {
-//     await db('users')
-//         .where({username: 'new-user'})
-//         .del()
-//     request(server)
-//         .post('/api/auth/register')
-//         .send({
-//             username: 'new-user',
-//             password: 'password'
-//       })
-//       .end((err, response) => {
-//         token = response.body.token;
-//         console.log(token)
-//         done();
-//       });
-// });
 
 describe('todos', () => {
 
