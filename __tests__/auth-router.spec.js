@@ -34,7 +34,7 @@ describe('register', () => {
                   });
         })
 
-        it('should return a JSON web token with successful registration', async done => {
+        it('should return JSON with successful registration', async done => {
             await db('users')
                     .where({username: 'newUser'})
                     .del()
