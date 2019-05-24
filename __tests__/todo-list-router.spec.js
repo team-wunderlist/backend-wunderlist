@@ -15,7 +15,6 @@ beforeAll(async done => {
         })
         .end((err, response) => {
             token = response.body.token;
-            console.log(token)
             done();
         });
 });
@@ -23,6 +22,7 @@ beforeAll(async done => {
 describe('todos', () => {
 
     describe('GET / todos', () => {
+        
         it('should require authorization', () => {
             return request(server).get('/api/todos').expect(401);
         })
@@ -47,6 +47,7 @@ describe('todos', () => {
     })
     
     describe('POST / todos', () => {
+
         it('should require authorization', () => {
             let todo = {
                 item: "to-do item"
@@ -87,6 +88,7 @@ describe('todos', () => {
     })
 
     describe('PUT / todos', () => {
+
         it('should require authorization', () => {
             let todo = {
                 item: "to-do item"
@@ -122,6 +124,26 @@ describe('todos', () => {
                 .send(todo)
                 .then(res => {
                     expect(res.status).toBe(200);
+                })
+        })
+    })
+
+    describe('DELETE / todo', () => {
+
+        it('should require authorization', () => {
+            return request(server)
+                .delete('/api/todos/5')
+                .then(res => {
+                    expect(res.status).toBe(401);
+                })
+        })
+
+        it('should return at status code 404 when trying to delete an item that does not exist', () => {
+            return request(server)
+                .delete('/api/todos/525')
+                .set('authorization', `${token}`)
+                .then(res => {
+                    expect(res.status).toBe(404);
                 })
         })
     })
